@@ -45,8 +45,19 @@ def post_chartofaccount(request):
     serializer = chartofAccountSeralizers(addChart, many=False)
     return Response(serializer.data)
 
-    # serializer = chartofAccountSeralizers(data=request.data)
-    # if serializer.is_valid():
-    #     serializer.save()
-    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-    # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# this is for litview of chart of account
+@api_view(['GET'])
+def chart_of_account_list(request):
+    """
+    This function is for displaying list of chart of Account
+    """
+    chartofAccount = ChartofAccount.objects.all().order_by('code')
+    serializer = chartofAccountSeralizers(chartofAccount, many=True)
+    return Response(serializer.data)
+    
+@api_view(['DELETE'])
+def deleteCOA(request, pk):
+    chartofAccount = ChartofAccount.objects.get(id=pk)
+    chartofAccount.delete()
+    return Response('data has been removed')
