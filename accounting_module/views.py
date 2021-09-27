@@ -113,8 +113,7 @@ def post_journalEntry(request):
         account_name = data['account_name'],
         debit = data['debit'], 
         credit = data['credit'],  
-        update = data['update'],
-        created = data['created'],        
+             
     )
     serializer = journalEntrySeralizers(addChart, many=False)
     return Response(serializer.data)
