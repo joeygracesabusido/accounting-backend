@@ -25,17 +25,16 @@ class ChartofAccount(models.Model):
         ordering = ['account_name']
 
 class JournalEntry(models.Model):
-    transdate = models.DateField()
-    journal = models.CharField(max_length=100)
-    reference = models. CharField(max_length=100)
-    check_no_ref = models.CharField(max_length=100)
-    journalMemo = models.CharField(max_length=500)
-    code = models.CharField(max_length=30)
-    trialBalance_chart = models.CharField(max_length=100)
-    account_name = models.ForeignKey(ChartofAccount,
-                                            on_delete=models.CASCADE)
-    debit = models.DecimalField(max_digits=19,decimal_places=2)   
-    credit = models.DecimalField(max_digits=19,decimal_places=2)  
+    transdate = models.DateField(null=True, blank=True)
+    journal = models.CharField(max_length=100,null=True, blank=True)
+    reference = models. CharField(max_length=100,null=True, blank=True)
+    check_no_ref = models.CharField(max_length=100,null=True, blank=True)
+    journalMemo = models.CharField(max_length=500,null=True, blank=True)
+    # account_name = models.ForeignKey(ChartofAccount,
+    #                                         on_delete=models.CASCADE)
+    account_name =  models.CharField(max_length=500,null=True, blank=True)
+    debit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True)   
+    credit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True)  
     update = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)                                 
 

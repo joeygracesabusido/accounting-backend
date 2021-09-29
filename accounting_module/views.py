@@ -108,8 +108,6 @@ def post_journalEntry(request):
         reference = data['reference'],
         check_no_ref = data['check_no_ref'],
         journalMemo = data['journalMemo'],
-        code = data['code'],
-        trialBalance_chart = data['trialBalance_chart'],
         account_name = data['account_name'],
         debit = data['debit'], 
         credit = data['credit'],  
@@ -118,3 +116,12 @@ def post_journalEntry(request):
     serializer = journalEntrySeralizers(addChart, many=False)
     return Response(serializer.data)
 
+# this function is for journal entry list
+@api_view(['GET'])
+def journalEntry_list(request):
+    """
+    This function is for displaying list of chart of Account
+    """
+    journalEntry = JournalEntry.objects.all()
+    serializer = journalEntrySeralizers(JournalEntry, many=True)
+    return Response(serializer.data)
