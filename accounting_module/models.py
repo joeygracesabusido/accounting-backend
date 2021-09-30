@@ -33,8 +33,10 @@ class JournalEntry(models.Model):
     # account_name = models.ForeignKey(ChartofAccount,
     #                                         on_delete=models.CASCADE)
     account_name =  models.CharField(max_length=500,null=True, blank=True)
-    debit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True)   
-    credit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True)  
+    # debit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True)   
+    # credit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True) 
+    debit = models.CharField(max_length=500,null=True, blank=True)   
+    credit = models.CharField(max_length=500,null=True, blank=True) 
     update = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)                                 
 
