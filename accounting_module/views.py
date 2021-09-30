@@ -123,5 +123,5 @@ def journalEntry_list(request):
     This function is for displaying list of chart of Account
     """
     journalEntry = JournalEntry.objects.all()
-    serializer = journalEntrySeralizers(JournalEntry, many=True)
+    serializer = journalEntrySeralizers(journalEntry, many=True)
     return Response(serializer.data)
