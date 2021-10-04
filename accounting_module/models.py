@@ -19,7 +19,8 @@ class ChartofAccount(models.Model):
     code =  models.CharField(max_length=100)
 
     def __str__(self):
-        return "%s %s" % (self.trialBalance_chart, self.account_name)
+        return self.account_name
+        # return "%s %s" % (self.trialBalance_chart, self.account_name)
 
     class Meta:
         ordering = ['account_name']
@@ -30,19 +31,13 @@ class JournalEntry(models.Model):
     reference = models. CharField(max_length=100,null=True, blank=True)
     check_no_ref = models.CharField(max_length=100,null=True, blank=True)
     journalMemo = models.CharField(max_length=500,null=True, blank=True)
-    # account_name = models.ForeignKey(ChartofAccount,
-    #                                         on_delete=models.CASCADE)
-    account_name =  models.CharField(max_length=500,null=True, blank=True)
+    account_name = models.ForeignKey(ChartofAccount,null=True, blank=True,
+                                            on_delete=models.CASCADE)
+    # account_name =  models.CharField(max_length=500,null=True, blank=True)
     # debit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True)   
-<<<<<<< HEAD
-    # credit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True)  
-    debit = models.CharField(max_length=500,null=True, blank=True)  
-    credit = models.CharField(max_length=500,null=True, blank=True)
-=======
     # credit = models.DecimalField(max_digits=19,decimal_places=2,null=True, blank=True) 
     debit = models.CharField(max_length=500,null=True, blank=True)   
     credit = models.CharField(max_length=500,null=True, blank=True) 
->>>>>>> 02e5d7426429dab2a1b7c53ba3b9024794e3a7bf
     update = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)                                 
 
