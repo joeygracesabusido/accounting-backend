@@ -57,18 +57,18 @@ def deleteNote(request, pk):
 
 @api_view(['POST'])
 def post_data(request):
-    data = request.data
-    notes = note.objects.create(
-        body=data['body']
-    )
-    serializer = noteSeralizers(notes, many=False)
-    return Response(serializer.data)
+    # data = request.data
+    # notes = note.objects.create(
+    #     body=data['body']
+    # )
+    # serializer = noteSeralizers(notes, many=False)
+    # return Response(serializer.data)
 
-    # serializer = noteSeralizers(data=request.data)
-    # if serializer.is_valid():
-    #     serializer.save()
-    #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-    # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer = noteSeralizers(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
 def updateNote(request, pk):
