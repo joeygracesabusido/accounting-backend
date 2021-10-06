@@ -40,8 +40,10 @@ class JournalEntry(models.Model):
     debit = models.CharField(max_length=500,null=True, blank=True)   
     credit = models.CharField(max_length=500,null=True, blank=True) 
     update = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)                                 
+    created = models.DateTimeField(auto_now_add=True) 
 
+
+    
 
 
 
