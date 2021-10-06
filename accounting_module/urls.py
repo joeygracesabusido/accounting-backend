@@ -14,5 +14,6 @@ urlpatterns = [
     path('journal-post2/', views.testApi, name="journla-post2"),
     path('journal-post/', views.post_journalEntry, name="post-journal"),
     path('journal-list/', views.journalEntry_list, name="list-journal"),
+    path('journal-delete/<str:pk>', views.delete_journalEntry, name="delete-journal-entry"),
    
 ]

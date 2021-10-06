@@ -113,11 +113,12 @@ def post_journalEntry(request):
         reference = data['reference'],
         check_no_ref = data['check_no_ref'],
         journalMemo = data['journalMemo'],
-        account_name_id = data['account_name_id'],
+        account_name = data ['account_name'],
         debit = data['debit'], 
         credit = data['credit'],  
-             
+           
     )
+
     serializer = journalEntrySeralizers(addChart, many=False)
     return Response(serializer.data)
 
@@ -164,6 +165,7 @@ def journalEntry_list(request):
     serializer = journalEntrySeralizers(journalEntry, many=True)
     return Response(serializer.data)
 
+# this function is to add journal entry
 @api_view(['POST'])
 def testApi(request):
     serializer = journalEntrySeralizers(data=request.data)
@@ -171,6 +173,17 @@ def testApi(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# this is for deleting journal entry
+@api_view(['DELETE'])
+def delete_journalEntry(request, pk):
+    """
+    This function is to delete chart of journal entry
+    """
+    chartofAccount = JournalEntry.objects.get(id=pk)
+    chartofAccount.delete()
+    return Response('data has been removed')
+
 
 # this function is fro testing class base API
 

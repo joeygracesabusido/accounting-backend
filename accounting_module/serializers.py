@@ -22,8 +22,8 @@ class journalEntrySeralizers(ModelSerializer):
     # marks = chartofAccountSeralizers(many=True, 
     #                                 read_only=True)
 
-    marks = chartofAccountSeralizers(many=True, 
-                                    read_only=True)
+    # marks = chartofAccountSeralizers(many=True, 
+    #                                 read_only=True)
     
     class Meta:
         model = JournalEntry
